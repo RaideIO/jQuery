@@ -95,7 +95,7 @@ Example(s)
 // When someone clicks the "Submit" button, submit this Support Ticket.
 $(':button#submit').click(function() {
     Raide.runSubmitFunction();
-})
+});
 ```
 
 ---
@@ -126,7 +126,7 @@ Raide.sendRequest("async/requests/get.html", {
         console.log(json);
     }
     "type": "GET"
-})
+});
 ```
 
 ---
@@ -149,7 +149,7 @@ Raide.setExtras({
         "id":       5,
         "name" :    "Kevin D"
     }
-})
+});
 ```
 
 ---
