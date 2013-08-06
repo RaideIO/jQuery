@@ -1,5 +1,11 @@
 ## RaideIO's RaideJS jQuery Object
 
+---
+
+This works hand-in-hand with the RaideIO API. The API is available in either [PHP](https://github.com/RaideIO/PHP) or [Ruby](https://github.com/RaideIO/Ruby).
+
+---
+
 ### Function List
 
 ```javascript
