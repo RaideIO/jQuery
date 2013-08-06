@@ -22,7 +22,9 @@ setOnClickElement(element)
 setSubmitFunction(callback)
 ```
 
-## Initializing a new instance of the RaideJS Object.
+---
+
+### Initializing a new instance of the RaideJS Object.
 
 ```javascript
 var Raide = new RaideJS;
