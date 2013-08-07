@@ -83,7 +83,7 @@ function RaideJS() {
 	/**
 	 * Get a summary of all of the information this Bug Report has assembled.
 	 *
-	 * @return	object	{area, client, inputs, location, requests, resources}
+	 * @return	string		A base64-encoded string
 	 */
 	
 	this._getBase64Summary = function() {
