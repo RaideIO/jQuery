@@ -6,6 +6,13 @@ This works hand-in-hand with the RaideIO API. The API is available in either [PH
 
 ---
 
+### Requirements
+
+- [jQuery](http://jquery.com/)
+- [PHP](https://github.com/RaideIO/PHP) or [Ruby](https://github.com/RaideIO/Ruby) Back-end
+
+---
+
 ### Function List
 
 ```javascript
@@ -276,7 +283,7 @@ Raide.setOnClickElement($(':button#submit'));
 
 ---
 
-### setSubmitFunction() - Sets the function that will be called once a base64-encoded summary of the Support Ticket has been gathered.
+### setSubmitFunction() - Sets the function that will be called when a Support Ticket is to be submitted.
 
 Parameter(s)
 
