@@ -2,17 +2,17 @@
  * RaideJS
  *
  * @funcs	clearAllHttpData()
- *			clearHttpData(method)
- *			log(type, data)
- *			sendRequest(url, parameters)
- *			setExtras(parameters)
- *			setHttpData(method, type, data)
- *			setInputValuesElement(element)
- *			setLocation(section, breadcrumbs)
- *			setOnClickElement(element)
- *			setSubmitData(data)
- *			setSubmitFunction(callback)
- *			setSubmitURL(url)
+ *		clearHttpData(method)
+ *		log(type, data)
+ *		sendAjaxRequest(url, parameters)
+ *		setExtras(parameters)
+ *		setHttpData(method, type, data)
+ *		setInputValuesElement(element)
+ *		setLocation(section, breadcrumbs)
+ *		setOnClickElement(element)
+ *		setSubmitData(data)
+ *		setSubmitFunction(callback)
+ *		setSubmitURL(url)
  */	
 
 function RaideJS() {
@@ -328,7 +328,7 @@ function RaideJS() {
 	 * @return	void
 	 */
 	
-	this.sendRequest = function(url, parameters) {
+	this.sendAjaxRequest = function(url, parameters) {
 		var _this = this;
 		
 		var complete	= (!parameters.complete	? function() {}	: parameters.complete),
