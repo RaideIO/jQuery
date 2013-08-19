@@ -19,14 +19,15 @@ This works hand-in-hand with the RaideIO API. The API is available in either [PH
 clearAllHttpData()
 clearHttpData(method)
 log(type, data)
-runSubmitFunction()
-sendRequest(url, parameters)
+sendAjaxRequest(url, parameters)
 setExtras(parameters)
 setHttpData(method, type, data)
 setInputValuesElement(element)
 setLocation(section, breadcrumbs)
 setOnClickElement(element)
+setSubmitData(data)
 setSubmitFunction(callback)
+setSubmitURL(url)
 ```
 
 ---
@@ -102,20 +103,7 @@ catch(e) {
 
 ---
 
-### runSubmitFunction() - Run the function to submit the Support Ticket to your back-end.
-
-Example(s)
-
-```javascript
-// When someone clicks the "Submit" button, submit this Support Ticket.
-$(':button#submit').click(function() {
-    Raide.runSubmitFunction();
-});
-```
-
----
-
-### sendRequest() - Run an Asynchronous request and log the results.
+### sendAjaxRequest() - Run an Asynchronous request and log the results.
 
 ** This function is a wrapper of jQuery's $.ajax() function. **
 
@@ -294,32 +282,21 @@ function    callback
 Example(s)
 
 ```javascript
-// Set the function to run when the runSubmitFunction() function has been called.
-Raide.setSubmitFunction(function(summary) {
-	// Submit the summary results to the back-end.
-	$.ajax("back-end/submit.php", {
-		"data": {
-			"comment": $('textarea[name="comment"]').val(), // A comment about the error.
-            "summary": summary
-		},
-		"dataType": "json",
-		"success": function(json) {
-			// If no errors occurred.
-			if (json.error == 0) {
-				var result = json.result || {};
-				
-				// What is the unique Support Ticket ID that was created?
-				var id = result.id;					
-				
-				// Redirect them to the Ticket.
-				window.location.href = "view.php?id="+id;
-			}
-			// An error occurred, inform the user.
-			else {
-				alert("Error: "+json.errorDescription);
-			}
-		},
-		"type": "POST"
-	});
+// Set the function to run when the Support Ticket has been submitted, and back-end data was received.
+Raide.setSubmitFunction(function(json) {
+	// If no errors occurred.
+	if (json.error == 0) {
+		var result = json.result || {};
+		
+		// What is the unique Support Ticket ID that was created?
+		var id = result.id;					
+		
+		// Redirect them to the Ticket.
+		window.location.href = "view.php?id="+id;
+	}
+	// An error occurred, so throw an error.
+	else {
+		throw json.errorDescription;
+	}
 });
 ```
