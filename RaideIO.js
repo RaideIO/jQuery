@@ -23,9 +23,9 @@ function RaideJS() {
 	this._OnClickElement = null;		// The DOM Element that will call the SubmitFunction when pressed.
 	this._Section = '';			// What section is the client using in the site? Eg: Dialog, HTML Report, Search
 	this._SessionStartTime = 0;		// What UNIX time did the client first load the website?
-	this._SubmitData = {}; // What data should we send along with the collected information?
+	this._SubmitData = {};			// What data should we send along with the collected information?
 	this._SubmitFunction = null;		// The function to run when runSubmitFunction() is executed.
-	this._SubmitURL = null; // Which URL should we submit the data to?
+	this._SubmitURL = null;			// Which URL should we submit the data to?
 	
 	/**
 	 * What GET & POST Request will we be sending?
