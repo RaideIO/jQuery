@@ -2,17 +2,17 @@
  * RaideJS
  *
  * @funcs	clearAllHttpData()
- *		clearHttpData(method)
- *		log(type, data)
- *		sendRequest(url, parameters)
- *		setExtras(parameters)
- *		setHttpData(method, type, data)
- *		setInputValuesElement(element)
- *		setLocation(section, breadcrumbs)
- *		setOnClickElement(element)
- *		setSubmitData(data)
- *		setSubmitFunction(callback)
- *		setSubmitURL(url)
+ *			clearHttpData(method)
+ *			log(type, data)
+ *			sendRequest(url, parameters)
+ *			setExtras(parameters)
+ *			setHttpData(method, type, data)
+ *			setInputValuesElement(element)
+ *			setLocation(section, breadcrumbs)
+ *			setOnClickElement(element)
+ *			setSubmitData(data)
+ *			setSubmitFunction(callback)
+ *			setSubmitURL(url)
  */	
 
 function RaideJS() {
@@ -23,9 +23,9 @@ function RaideJS() {
 	this._OnClickElement = null;		// The DOM Element that will call the SubmitFunction when pressed.
 	this._Section = '';			// What section is the client using in the site? Eg: Dialog, HTML Report, Search
 	this._SessionStartTime = 0;		// What UNIX time did the client first load the website?
-	this._SubmitData = {}; 			// What data should we send along with the collected information?
+	this._SubmitData = {}; // What data should we send along with the collected information?
 	this._SubmitFunction = null;		// The function to run when runSubmitFunction() is executed.
-	this._SubmitURL = null; 		// Which URL should we submit the data to?
+	this._SubmitURL = null; // Which URL should we submit the data to?
 	
 	/**
 	 * What GET & POST Request will we be sending?
@@ -103,8 +103,8 @@ function RaideJS() {
 								// What information should we be submitting?
 								var pushing = {
 									'description':	$('textarea#description', DOM).val(),
-									'subject':		$(':text#subject', DOM).val(),
-									'summary':		_this._getBase64Summary()
+									'subject':	$(':text#subject', DOM).val(),
+									'summary':	_this._getBase64Summary()
 								};
 								
 								var merged = $.extend(pushing, _this._SubmitData);
@@ -115,6 +115,9 @@ function RaideJS() {
 									'success': function(json) {
 										try {
 											_this._SubmitFunction(json);
+											
+											// Hide the Modal Dialog.
+											DOM.removeClass('Visible');
 										}
 										// If an error was fetched.
 										catch (e) {
