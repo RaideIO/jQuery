@@ -1,18 +1,21 @@
 /**
  * RaideJS
  *
- * @funcs  clearAllHttpData()
- *		clearHttpData(method)
- *		log(type, data)
- *		runSubmitFunction()
- *		sendRequest(url, parameters)
- *		setExtras(parameters)
- *		setHttpData(method, type, data)
- *		setInputValuesElement(element)
- *		setLocation(section, breadcrumbs)
- *		setOnClickElement(element)
- *		setSubmitFunction(callback)
- */
+ * @funcs	clearAllHttpData()
+ *			clearHttpData(method)
+ *			log(type, data)
+ *			runSubmitFunction()
+ *			sendRequest(url, parameters)
+ *			setExtras(parameters)
+ *			setHttpData(method, type, data)
+ *			setInputValuesElement(element)
+ *			setLocation(section, breadcrumbs)
+ *			setOnClickElement(element)
+ *			setSubmitFunction(callback)
+ *
+ *			setSubmitData(data)
+ *			setSubmitURL(url)
+ */	
 
 function RaideJS() {
 	this._Breadcrumbs = []; 		// Where is this client located? Eg: ['User', 'Edit']
@@ -22,7 +25,9 @@ function RaideJS() {
 	this._OnClickElement = null;		// The DOM Element that will call the SubmitFunction when pressed.
 	this._Section = '';			// What section is the client using in the site? Eg: Dialog, HTML Report, Search
 	this._SessionStartTime = 0;		// What UNIX time did the client first load the website?
+	this._SubmitData = {};			// What data should we send along with the collected information?
 	this._SubmitFunction = null;		// The function to run when runSubmitFunction() is executed.
+	this._SubmitURL = null;			// Which URL should we submit the data to?
 	
 	/**
 	 * What GET & POST Request will we be sending?
@@ -49,14 +54,88 @@ function RaideJS() {
 	
 	this._bindElement = function() {
 		// If a DOM element and on click callback have been set.
-		if (this._OnClickElement !== null && this._SubmitFunction !== null) {
+		if (this._OnClickElement !== null && this._SubmitURL !== null && this._SubmitFunction !== null) {
 			var _this = this;
 			
 			this._OnClickElement
 				.unbind('click')
 				.bind('click', function() {
-					// Call the OnClick function.
-					_this.runSubmitFunction();
+					// What DOM Element will we open so that they can enter their subject and description?
+					var DOM = $('div#RaideSubmit');
+					
+					// If the DOM element doesn't exist.
+					if (DOM.length == 0) {
+						$('body')
+							.append('<div id="RaideSubmit" class="Visible">' +
+										'<div id="RaideOverlay"></div>' +
+										'<div id="RaideModalDialog">' +
+											'<div id="RaideModalHeader">Submit Support Ticket</div>' +
+											'<div id="RaideModalStatus"></div>' +
+											'<div id="RaideModalContent">' +
+												'<table cellpadding="0" cellspacing="0">' +
+													'<tr>' +
+														'<th>Subject</th>' +
+														'<td><input type="text" id="subject"></td>' +
+													'</tr>' +
+													'<tr>' +
+														'<th>Description</th>' +
+														'<td><textarea id="description"></textarea></td>' +
+													'</tr>' +
+												'</table>' +
+											'</div>' +
+											'<div id="RaideModalFooter">' +
+												'<button id="submit">Submit</button>' +
+												'<button id="close">Close</button>' +
+											'</div>' +
+										'</div>' +
+									'</div>');
+									
+						// Fetch the newly-appended Raide DIV.
+						var DOM = $('div#RaideSubmit');
+									
+						// Bind the Close button.
+						$(':button#close', DOM)
+							.bind('click', function() {
+								DOM.removeClass('Visible');
+							});
+									
+						// Bind the Submit button.
+						$(':button#submit', DOM)
+							.bind('click', function() {
+								// What information should we be submitting?
+								var pushing = {
+									'description':	$('textarea#description', DOM).val(),
+									'subject':	$(':text#subject', DOM).val(),
+									'summary':	_this._getBase64Summary()
+								};
+								
+								var merged = $.extend(pushing, _this._SubmitData);
+								
+								$.ajax(_this._SubmitURL, {
+									'data': merged,
+									'dataType': 'JSON',
+									'success': function(json) {
+										try {
+											_this._SubmitFunction(json);
+										}
+										// If an error was fetched.
+										catch (e) {
+											$('#RaideModalStatus', DOM)
+												.addClass('Visible')
+												.text(e);
+										}
+									},
+									'type': 'POST'
+								});
+							});
+					}
+					else {
+						DOM.addClass('Visible');
+						
+						// Clear all input values.
+						$(':text, textarea', DOM).val('');
+						$('#RaideModalStatus', DOM).removeClass('Visible');
+					}
 					
 					return false;
 				});
@@ -203,18 +282,6 @@ function RaideJS() {
 	 */
 	
 	this.clearAllHttpData = function() {
-		// If a DOM Element was set, unbind it.
-		if (this._OnClickElement !== null) {
-			this._OnClickElement.unbind('click');
-		}
-		
-		this._Breadcrumbs = [];
-		this._OnClickElement = null;
-		this._Extras = {};
-		this._InputValuesElement = null;
-		this._SubmitFunction = null;
-		this._Section = '';
-		
 		// Clear the stored GET and POST results.
 		this.clearHttpData('GET');
 		this.clearHttpData('POST');
@@ -417,6 +484,16 @@ function RaideJS() {
 	
 	this.setSubmitFunction = function(callback) {
 		this._SubmitFunction = callback;
+		this._bindElement();
+	};
+	
+	this.setSubmitData = function(data) {
+		this._SubmitData = data;
+		this._bindElement();
+	};
+	
+	this.setSubmitURL = function(url) {
+		this._SubmitURL = url;
 		this._bindElement();
 	};
 	
