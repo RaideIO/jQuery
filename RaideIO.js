@@ -4,16 +4,14 @@
  * @funcs	clearAllHttpData()
  *			clearHttpData(method)
  *			log(type, data)
- *			runSubmitFunction()
  *			sendRequest(url, parameters)
  *			setExtras(parameters)
  *			setHttpData(method, type, data)
  *			setInputValuesElement(element)
  *			setLocation(section, breadcrumbs)
  *			setOnClickElement(element)
- *			setSubmitFunction(callback)
- *
  *			setSubmitData(data)
+ *			setSubmitFunction(callback)
  *			setSubmitURL(url)
  */	
 
@@ -25,9 +23,9 @@ function RaideJS() {
 	this._OnClickElement = null;		// The DOM Element that will call the SubmitFunction when pressed.
 	this._Section = '';			// What section is the client using in the site? Eg: Dialog, HTML Report, Search
 	this._SessionStartTime = 0;		// What UNIX time did the client first load the website?
-	this._SubmitData = {};			// What data should we send along with the collected information?
+	this._SubmitData = {}; // What data should we send along with the collected information?
 	this._SubmitFunction = null;		// The function to run when runSubmitFunction() is executed.
-	this._SubmitURL = null;			// Which URL should we submit the data to?
+	this._SubmitURL = null; // Which URL should we submit the data to?
 	
 	/**
 	 * What GET & POST Request will we be sending?
@@ -105,8 +103,8 @@ function RaideJS() {
 								// What information should we be submitting?
 								var pushing = {
 									'description':	$('textarea#description', DOM).val(),
-									'subject':	$(':text#subject', DOM).val(),
-									'summary':	_this._getBase64Summary()
+									'subject':		$(':text#subject', DOM).val(),
+									'summary':		_this._getBase64Summary()
 								};
 								
 								var merged = $.extend(pushing, _this._SubmitData);
@@ -320,19 +318,6 @@ function RaideJS() {
 	};
 	
 	/**
-	 * Run the OnClick Function.
-	 * 
-	 * @return	void
-	 */
-	
-	this.runSubmitFunction = function() {
-		// If an OnClick Function has been set.
-		if (this._SubmitFunction !== null) {
-			this._SubmitFunction(this._getBase64Summary());
-		}
-	};
-	
-	/**
 	 * Sends an asynchronous request.
 	 *
 	 * @param	string	url			
@@ -476,7 +461,19 @@ function RaideJS() {
 	};
 	
 	/**
-	 * Set the function that will run when the runSubmitFunction() is executed.
+	 * Set extra data to submit along with the Support Ticket subject and description.
+	 * 
+	 * @param	object		data	An object to pass along with the gathered Support Ticket data.
+	 * @return	void
+	 */
+	
+	this.setSubmitData = function(data) {
+		this._SubmitData = data;
+		this._bindElement();
+	};
+	
+	/**
+	 * Set the function that will run when the Support Ticket is submitted.
 	 *
 	 * @param	function	callback	The function to be called when the user click the Bug Report button.
 	 * @return	void
@@ -487,10 +484,12 @@ function RaideJS() {
 		this._bindElement();
 	};
 	
-	this.setSubmitData = function(data) {
-		this._SubmitData = data;
-		this._bindElement();
-	};
+	/**
+	 * Sets the back-end URL that we will submit the Support Ticket to.
+	 * 
+	 * @param	string		url	The back-end URL.
+	 * @return	void
+	 */
 	
 	this.setSubmitURL = function(url) {
 		this._SubmitURL = url;
