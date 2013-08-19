@@ -271,7 +271,7 @@ Raide.setOnClickElement($(':button#submit'));
 
 ---
 
-### setSubmitFunction() - Sets the function that will be called when a Support Ticket is to be submitted.
+### setSubmitFunction() - Sets the function that will be called when the Support Ticket is submitted, and data has been received from the back-end.
 
 Parameter(s)
 
