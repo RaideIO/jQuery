@@ -112,6 +112,10 @@ function RaideJS() {
 								// Merge the above data with the custom Submit Data they want to append.
 								var merged = $.extend(pushing, _this._SubmitData);
 								
+								// Set the Status Text as "Loading...".
+								$('#RaideModalStatus', DOM).text('Loading...');
+								
+								// Submit the Support Ticket to the back-end.
 								$.ajax(_this._SubmitURL, {
 									'data': merged,
 									'dataType': 'JSON',
@@ -125,6 +129,7 @@ function RaideJS() {
 										// If an error was fetched.
 										catch (e) {
 											$('#RaideModalStatus', DOM)
+												.addClass('Error')
 												.addClass('Visible')
 												.text(e);
 										}
@@ -138,7 +143,11 @@ function RaideJS() {
 						
 						// Clear all input values.
 						$(':text, textarea', DOM).val('');
-						$('#RaideModalStatus', DOM).removeClass('Visible');
+						
+						// Remove the Error and Visible classes from the modal dialog.
+						$('#RaideModalStatus', DOM)
+							.removeClass('Error')
+							.removeClass('Visible');
 					}
 					
 					return false;
