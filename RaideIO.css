@@ -22,7 +22,7 @@
 }
 
 #RaideSubmit #RaideModalDialog {
-	border: 6px solid #25AE5F;
+	border: 6px solid #3b5998;
 	border-radius: 4px;
 	left: 50%;
 	margin-left: -250px;
@@ -68,8 +68,8 @@
 }
 
 #RaideSubmit #RaideModalDialog #RaideModalFooter {
-	background: #e8faf0;
-	border-top: 1px solid #d7d7d7;
+	background: #c9d5ef;
+	border-top: 1px solid #a5b6ff;
 	padding: 6px;
 	text-align: right;
 }
@@ -78,9 +78,13 @@
 	margin-left: 8px;
 }
 
+#RaideSubmit #RaideModalDialog #RaideModalFooter button#Submit {
+	font-weight: bold;
+}
+
 #RaideSubmit #RaideModalDialog #RaideModalHeader {
-	background: #e8faf0;
-	border-bottom: 1px solid #d7d7d7;
+	background: #c9d5ef;
+	border-bottom: 1px solid #a5b6ff;
 	font-size: 14px;
 	padding: 8px;
 }
