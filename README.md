@@ -118,7 +118,7 @@ Example(s)
 
 ```javascript
 // Fetch and log information about an Asynchronous request.
-Raide.sendRequest("async/requests/get.html", {
+Raide.sendAjaxRequest("async/requests/get.html", {
     "data": {
         "method":   "fetch"
         "user":     15
