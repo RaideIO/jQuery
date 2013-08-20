@@ -114,6 +114,7 @@ function RaideJS() {
 								
 								// Set the Status Text as "Loading...".
 								$('#RaideModalStatus', DOM)
+									.removeClass('Error')
 									.addClass('Visible')
 									.text('Loading...');
 								
