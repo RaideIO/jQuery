@@ -86,11 +86,15 @@
 }
 
 #RaideSubmit #RaideModalDialog #RaideModalStatus {
-	background: #f9d8d8;
+	background: #f0f0f0;
 	border-bottom: 1px solid #d7d7d7;
 	display: none;
 	padding: 6px 0;
 	text-align: center;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalStatus.Error {
+	background: #f9d8d8;
 }
 
 #RaideSubmit #RaideModalDialog #RaideModalStatus.Visible {
