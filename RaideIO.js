@@ -113,7 +113,9 @@ function RaideJS() {
 								var merged = $.extend(pushing, _this._SubmitData);
 								
 								// Set the Status Text as "Loading...".
-								$('#RaideModalStatus', DOM).text('Loading...');
+								$('#RaideModalStatus', DOM)
+									.addClass('Visible')
+									.text('Loading...');
 								
 								// Submit the Support Ticket to the back-end.
 								$.ajax(_this._SubmitURL, {
