@@ -82,8 +82,8 @@ function RaideJS() {
 												'</table>' +
 											'</div>' +
 											'<div id="RaideModalFooter">' +
-												'<button id="submit">Submit</button>' +
-												'<button id="close">Close</button>' +
+												'<button id="Submit">Submit</button>' +
+												'<button id="Close">Close</button>' +
 											'</div>' +
 										'</div>' +
 									'</div>');
@@ -92,14 +92,14 @@ function RaideJS() {
 						var DOM = $('div#RaideSubmit');
 									
 						// Bind the Close button.
-						$(':button#close', DOM)
+						$(':button#Close', DOM)
 							.unbind('click')
 							.bind('click', function() {
 								DOM.removeClass('Visible');
 							});
 									
 						// Bind the Submit button.
-						$(':button#submit', DOM)
+						$(':button#Submit', DOM)
 							.unbind('click')
 							.bind('click', function() {
 								// What information should we be submitting?
