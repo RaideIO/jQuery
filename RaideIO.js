@@ -126,7 +126,7 @@ function RaideJS() {
 									'complete': function() {
 										// Re-enable all buttons.
 										$(':button', DOM).prop('disabled', false);
-									}
+									},
 									'data': merged,
 									'dataType': 'JSON',
 									'success': function(json) {
