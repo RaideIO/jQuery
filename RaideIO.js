@@ -129,6 +129,12 @@ function RaideJS() {
 									},
 									'data': merged,
 									'dataType': 'JSON',
+									'error': function() {
+										$('#RaideModalStatus', DOM)
+											.addClass('Error')
+											.addClass('Visible')
+											.text('An error has occurred,');	
+									},
 									'success': function(json) {
 										try {
 											_this._SubmitFunction(json);
@@ -149,6 +155,7 @@ function RaideJS() {
 							});
 					}
 					else {
+						// Hide Raide.
 						DOM.addClass('Visible');
 						
 						// Enable all buttons.
