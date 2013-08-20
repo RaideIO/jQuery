@@ -93,12 +93,14 @@ function RaideJS() {
 									
 						// Bind the Close button.
 						$(':button#close', DOM)
+							.unbind('click')
 							.bind('click', function() {
 								DOM.removeClass('Visible');
 							});
 									
 						// Bind the Submit button.
 						$(':button#submit', DOM)
+							.unbind('click')
 							.bind('click', function() {
 								// What information should we be submitting?
 								var pushing = {
@@ -107,6 +109,7 @@ function RaideJS() {
 									'summary':	_this._getBase64Summary()
 								};
 								
+								// Merge the above data with the custom Submit Data they want to append.
 								var merged = $.extend(pushing, _this._SubmitData);
 								
 								$.ajax(_this._SubmitURL, {
