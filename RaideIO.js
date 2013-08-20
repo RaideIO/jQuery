@@ -112,6 +112,9 @@ function RaideJS() {
 								// Merge the above data with the custom Submit Data they want to append.
 								var merged = $.extend(pushing, _this._SubmitData);
 								
+								// Disable all buttons.
+								$(':button', DOM).prop('disabled', true);
+								
 								// Set the Status Text as "Loading...".
 								$('#RaideModalStatus', DOM)
 									.removeClass('Error')
@@ -120,6 +123,10 @@ function RaideJS() {
 								
 								// Submit the Support Ticket to the back-end.
 								$.ajax(_this._SubmitURL, {
+									'complete': function() {
+										// Re-enable all buttons.
+										$(':button', DOM).prop('disabled', false);
+									}
 									'data': merged,
 									'dataType': 'JSON',
 									'success': function(json) {
@@ -143,6 +150,9 @@ function RaideJS() {
 					}
 					else {
 						DOM.addClass('Visible');
+						
+						// Enable all buttons.
+						$(':button', DOM).prop('disabled', false);
 						
 						// Clear all input values.
 						$(':text, textarea', DOM).val('');
