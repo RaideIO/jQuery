@@ -55,13 +55,14 @@ function RaideJS() {
 		if (this._OnClickElement !== null && this._SubmitURL !== null && this._SubmitFunction !== null) {
 			var _this = this;
 			
+			// Bind their OnClickElement, so that when it's pressed, the Raide modal dialog opens.
 			this._OnClickElement
 				.unbind('click')
 				.bind('click', function() {
 					// What DOM Element will we open so that they can enter their subject and description?
 					var DOM = $('div#RaideSubmit');
 					
-					// If the DOM element doesn't exist.
+					// If the Raide modal dialog hasn't been appended to the DOM yet.
 					if (DOM.length == 0) {
 						$('body')
 							.append('<div id="RaideSubmit" class="Visible">' +
@@ -88,7 +89,7 @@ function RaideJS() {
 										'</div>' +
 									'</div>');
 									
-						// Fetch the newly-appended Raide DIV.
+						// Fetch the newly-appended Raide DOM Element
 						var DOM = $('div#RaideSubmit');
 									
 						// Bind the Close button.
@@ -154,6 +155,7 @@ function RaideJS() {
 								});
 							});
 					}
+					// If the Raide DOM Element has already been appended.
 					else {
 						// Hide Raide.
 						DOM.addClass('Visible');
