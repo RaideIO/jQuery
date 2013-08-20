@@ -271,7 +271,26 @@ Raide.setOnClickElement($(':button#submit'));
 
 ---
 
-### setSubmitFunction() - Sets the function that will be called when the Support Ticket is submitted, and data has been received from the back-end.
+### setSubmitData() - Sets extra information to send to the back-end along with the Support Ticket data.
+
+Parameter(s)
+
+```
+object	data
+```
+
+Example(s)
+
+```javascript
+// Set extra data that will be sent to the back-end along with the Support Ticket.
+Raide.setSubmitData({
+	"sessionID": "192KAM1MZO9A0A7S66DQIP"
+});
+```
+
+---
+
+### setSubmitFunction() - Sets the function that will be called when the Support Ticket was submitted, and data has been returned from the back-end.
 
 Parameter(s)
 
@@ -299,4 +318,21 @@ Raide.setSubmitFunction(function(json) {
 		throw json.errorDescription;
 	}
 });
+```
+
+---
+
+### setSubmitURL() - Sets the URL that we will submit the Support Ticket data to.
+
+Parameter(s)
+
+```
+string	url
+```
+
+Example(s)
+
+```javascript
+// Sets the URL that we will submit the Support Ticket data to, which will use the API.
+Raide.setSubmitURL("back-end/submit.php");
 ```
