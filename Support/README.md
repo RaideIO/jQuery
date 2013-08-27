@@ -1,4 +1,4 @@
-## RaideIO's RaideJS jQuery Object
+## RaideIO's Support JavaScript (and jQuery) Object File
 
 ---
 
