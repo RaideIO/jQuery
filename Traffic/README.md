@@ -1,4 +1,4 @@
-## RaideIO's Support jQuery Object
+## RaideIO's Traffic JavaScript (and jQuery) File
 
 ---
 
