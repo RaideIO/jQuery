@@ -3,6 +3,7 @@
 ---
 
 This works hand-in-hand with the RaideIO's Traffic API. The API is available in [PHP](https://github.com/RaideIO/PHP/tree/master/Traffic).
+
 You can use the latest version located on Raide's servers at [http://my.raide.io/media/js/RaideIOTraffic.js](http://my.raide.io/media/js/RaideIOTraffic.js)
 
 ---
