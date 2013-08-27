@@ -1,0 +1,106 @@
+#RaideSubmit {
+	display: none;
+}
+
+#RaideSubmit.Visible {
+	display: block;
+}
+
+#RaideSubmit #RaideOverlay {
+	background: #E9E9E9;
+	bottom: 0;
+	filter: alpha(opacity=70);
+	left: 0;
+	opacity: 0.70;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 10000;
+	
+	-moz-opacity: 0.70;
+	-webkit-opacity: 0.70;
+}
+
+#RaideSubmit #RaideModalDialog {
+	border: 6px solid #3b5998;
+	border-radius: 4px;
+	left: 50%;
+	margin-left: -250px;
+	position: fixed;
+	top: 27%;
+	width: 506px;
+	z-index: 10001;
+	
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalContent {
+	background: white;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalContent table {
+	width: 100%;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalContent table td {
+	padding: 6px 8px;
+	white-space: nowrap;
+	width: 70%;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalContent table td input {
+	width: 85%;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalContent table td textarea {
+	height: 80px;
+	width: 85%;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalContent table th {
+	background: #f6f6f6;
+	padding: 8px 12px;
+	text-align: left;
+	vertical-align: top;
+	white-space: nowrap;
+	width: 30%;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalFooter {
+	background: #c9d5ef;
+	border-top: 1px solid #a5b6ff;
+	padding: 6px;
+	text-align: right;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalFooter button {
+	margin-left: 8px;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalFooter button#Submit {
+	font-weight: bold;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalHeader {
+	background: #c9d5ef;
+	border-bottom: 1px solid #a5b6ff;
+	font-size: 14px;
+	padding: 8px;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalStatus {
+	background: #f0f0f0;
+	border-bottom: 1px solid #d7d7d7;
+	display: none;
+	padding: 6px 0;
+	text-align: center;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalStatus.Error {
+	background: #f9d8d8;
+}
+
+#RaideSubmit #RaideModalDialog #RaideModalStatus.Visible {
+	display: block;
+}
