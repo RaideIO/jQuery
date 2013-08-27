@@ -59,6 +59,10 @@ var RaideIOTraffic = {
 			RaideIOLogger.Timer.Start();
 		},
 		'Stored': null
+	},
+	
+	'setSubmitURL': function(url) {
+		RaideIOTraffic.URL.Set(url);
 	}
 };
 
