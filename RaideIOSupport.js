@@ -1,5 +1,5 @@
 /**
- * RaideJS
+ * RaideIO
  *
  * @funcs	clearAllHttpData()
  *		clearHttpData(method)
@@ -15,7 +15,7 @@
  *		setSubmitURL(url)
  */	
 
-function RaideIOSupport() {
+function RaideIO() {
 	this._Breadcrumbs = []; 		// Where is this client located? Eg: ['User', 'Edit']
 	this._Extras = {}; 			// Extra information to log.
 	this._InputValuesElement = null;	// DOM Element.
