@@ -35,7 +35,7 @@ setSubmitURL(url)
 ### Initializing a new instance of the RaideJS Object.
 
 ```javascript
-var Raide = new RaideIOSupport;
+var Raide = new RaideIO;
 ```
 
 ---
