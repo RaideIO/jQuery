@@ -2,14 +2,14 @@
 
 ---
 
-This works hand-in-hand with the RaideIO's Support API. The API is available in either [PHP](https://github.com/RaideIO/PHP/tree/master/Support) or [Ruby](https://github.com/RaideIO/Ruby/tree/master/Support).
+This works hand-in-hand with the RaideIO's Support API. The API is available in either [PHP](https://github.com/RaideIO/PHP) or [Ruby](https://github.com/RaideIO/Ruby).
 
 ---
 
 ### Requirements
 
 - [jQuery](http://jquery.com/)
-- [PHP](https://github.com/RaideIO/PHP/tree/master/Support) or [Ruby](https://github.com/RaideIO/Ruby/tree/master/Support) Back-end
+- [PHP](https://github.com/RaideIO/PHP) or [Ruby](https://github.com/RaideIO/Ruby) Back-end
 
 ---
 
